@@ -17,19 +17,6 @@
 # limitations under the License.
 #
 
-### Setup Variables
-
-db_database = node['alfresco']['db']['database']
-db_user     = node['alfresco']['db']['user']
-db_pass     = node['alfresco']['db']['password']
-
-db_info = {
-  :host     => node['mysql']['bind_address'],
-  :port     => 3306,
-  :username => 'root',
-  :password => node['mysql']['server_root_password']
-}
-
 
 ### Install Package Dependencies
 
@@ -43,6 +30,19 @@ end
 include_recipe "mysql::server"
 gem_package "mysql"
 include_recipe "database"
+
+### Setup Variables
+
+db_database = node['alfresco']['db']['database']
+db_user     = node['alfresco']['db']['user']
+db_pass     = node['alfresco']['db']['password']
+
+db_info = {
+  :host     => node['mysql']['bind_address'],
+  :port     => 3306,
+  :username => 'root',
+  :password => node['mysql']['server_root_password']
+}
 
 
 ### Create Mysql Database Instance And Application User
